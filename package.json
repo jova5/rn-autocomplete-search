@@ -1,0 +1,22 @@
+{
+  "name": "rn-autocomplete-search",
+  "version": "1.0.0",
+  "description": "Component that can be used for autocomplete or for search complete.",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jova5/rn-autocomplete-search.git"
+  },
+  "keywords": [
+    "react-native-autocomplete-search"
+  ],
+  "author": "Milos Jovicic",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jova5/rn-autocomplete-search/issues"
+  },
+  "homepage": "https://github.com/jova5/rn-autocomplete-search#readme"
+}
