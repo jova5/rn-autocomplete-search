@@ -1,15 +1,15 @@
 import React from "react";
 import {
-  StyleProp,
+  type StyleProp,
   StyleSheet,
   Text,
-  TextStyle,
+  type TextStyle,
   TouchableNativeFeedback,
   View,
-  ViewStyle
+  type ViewStyle,
 } from "react-native";
 
-export const RecommendationItem = (
+const RecommendationItem = (
     {
       item,
       searchQuery,
@@ -73,6 +73,8 @@ export const RecommendationItem = (
       </View>
   )
 }
+
+export default RecommendationItem;
 
 const styles = StyleSheet.create({
   suggestion: {

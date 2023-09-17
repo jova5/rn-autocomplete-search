@@ -1,17 +1,17 @@
-import React, {ReactElement, useEffect, useRef, useState} from "react";
+import React, { type ReactElement, useEffect, useRef, useState} from "react";
 import {
-  ReturnKeyTypeOptions,
-  StyleProp,
+  type ReturnKeyTypeOptions,
+  type StyleProp,
   StyleSheet,
   TextInput,
-  TextStyle,
+  type TextStyle,
   View,
-  ViewStyle
+  type ViewStyle,
 } from "react-native";
-import {ButtonIcon} from "../ButtonIcon/ButtonIcon";
-import {RecommendationModal} from "../RecommendationModal/RecommendationModal";
+import ButtonIcon from '../ButtonIcon/ButtonIcon';
+import RecommendationModal from '../RecommendationModal/RecommendationModal';
 
-export const AutocompleteSearch = (
+const AutocompleteSearch = (
     {
       data,
       onLeftIconPress,
@@ -109,7 +109,7 @@ export const AutocompleteSearch = (
   useEffect(() => {
     setTimeout(() => {
       if (searchBarRef.current) {
-        searchBarRef.current.measure((fx, fy, width, height, px, py) => {
+        searchBarRef.current.measure((_fx, _fy, width, height, px, py) => {
           setSearchBarCoordinateInfo({
             x: px,
             y: py,
@@ -280,6 +280,8 @@ export const AutocompleteSearch = (
       </React.Fragment>
   )
 }
+
+export default AutocompleteSearch;
 
 const styles = StyleSheet.create({
   search: {

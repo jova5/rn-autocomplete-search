@@ -1,8 +1,8 @@
-import React, {ReactElement} from "react";
+import React, { type ReactElement} from "react";
 import {StyleSheet, TouchableNativeFeedback, View} from "react-native";
 import MaterialIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
-export const ButtonIcon = (
+const ButtonIcon = (
     {
       icon,
       iconColor,
@@ -68,13 +68,15 @@ export const ButtonIcon = (
               Icon ?
                   Icon()
                   :
-                  <MaterialIcons name={icon} size={size} color={iconColor}/>
+                  <MaterialIcons name={icon!} size={size} color={iconColor}/>
             }
           </View>
         </TouchableNativeFeedback>
       </View>
   )
 }
+
+export default ButtonIcon;
 
 const styles = StyleSheet.create({
   container: {

@@ -1,15 +1,15 @@
-import React, {ReactElement, useEffect, useState} from "react";
+import React, { type ReactElement, useEffect, useState} from "react";
 import {
   Dimensions,
   FlatList,
-  StyleProp,
+  type StyleProp,
   StyleSheet,
   Text,
-  TextStyle,
+  type TextStyle,
   View,
-  ViewStyle
+  type ViewStyle,
 } from "react-native";
-import {RecommendationItem} from "../RecommendationItem/RecommendationItem";
+import RecommendationItem from '../RecommendationItem/RecommendationItem';
 
 const getRecommendationItem = (
     {
@@ -56,7 +56,7 @@ const getRecommendationItem = (
   )
 }
 
-export const RecommendationModal = (
+const RecommendationModal = (
     {
       data,
       open,
@@ -165,6 +165,8 @@ export const RecommendationModal = (
       </>
   )
 }
+
+export default RecommendationModal;
 
 const styles = StyleSheet.create({
   container: {
