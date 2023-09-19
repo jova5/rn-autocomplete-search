@@ -10,13 +10,6 @@ npm install rn-autocomplete-search
 
 ## Usage
 
-```js
-import { RnAutocompleteSearchView } from "rn-autocomplete-search";
-
-// ...
-
-<RnAutocompleteSearchView color="tomato" />
-```
 
 ## Contributing
 
