@@ -11,7 +11,7 @@ const isTurboModuleEnabled = global.__turboModuleProxy != null;
 
 const RnAutocompleteSearchModule = isTurboModuleEnabled
   ? require('./NativeRnAutocompleteSearch').default
-  : NativeModules.RnAutocompleteSearch;
+  : NativeModules.AutocompleteSearch;
 
 const RnAutocompleteSearch = RnAutocompleteSearchModule
   ? RnAutocompleteSearchModule
@@ -24,6 +24,5 @@ const RnAutocompleteSearch = RnAutocompleteSearchModule
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return RnAutocompleteSearch.multiply(a, b);
-}
+export default RnAutocompleteSearch;
+
