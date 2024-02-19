@@ -1,25 +1,32 @@
 import * as React from 'react';
 
-import { StyleSheet, View } from 'react-native';
-import { RnAutocompleteSearchView } from 'rn-autocomplete-search';
+import {Animated, SafeAreaView, StyleSheet, View} from 'react-native';
+import {AutocompleteSearch} from "../../src/components/AutocompleteSearch/AutocompleteSearch";
+import ScrollView = Animated.ScrollView;
 
 export default function App() {
+
+  const data = [{id: '1', text: 'string'},{id: '2', text: 'string2'}]
+
   return (
-    <View style={styles.container}>
-      <RnAutocompleteSearchView color="#32a852" style={styles.box} />
-    </View>
+    <SafeAreaView style={styles.safeAreaWrapper}>
+      <AutocompleteSearch data={data} textInputPlaceholder={'Pretraga'} noResultInfo={'Nema rezultata'}/>
+      <ScrollView showsVerticalScrollIndicator={false} style={{display: "flex"}}>
+
+        {/*<View style={{display: 'flex', flex: 1, backgroundColor: 'red'}}>*/}
+        {/*  <Text>dsadasdasd</Text>*/}
+        {/*</View>*/}
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  safeAreaWrapper: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
+    paddingTop: 10,
+    paddingBottom: 0,
+    display: 'flex',
+    backgroundColor: '#F9FAFB'
   },
 });
