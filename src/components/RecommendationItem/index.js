@@ -1,1 +1,0 @@
-export RecommendationItem from './RecommendationItem';

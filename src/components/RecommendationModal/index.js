@@ -1,1 +1,0 @@
-export RecommendationModal from './RecommendationModal';
