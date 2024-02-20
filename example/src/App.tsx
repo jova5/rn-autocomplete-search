@@ -15,8 +15,7 @@ export default function App() {
         textInputPlaceholder={'Pretraga'}
         noResultInfo={'Nema rezultata'}
       />
-      <ScrollView showsVerticalScrollIndicator={false} style={{display: "flex"}}>
-      </ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false} style={{display: "flex"}}/>
     </SafeAreaView>
   );
 }

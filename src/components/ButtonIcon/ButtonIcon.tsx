@@ -1,6 +1,7 @@
 import React, {type ReactElement} from "react";
 import {StyleSheet, TouchableNativeFeedback, View} from "react-native";
 import MaterialIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import {hexToRGBA} from "../common/Common";
 
 export const ButtonIcon = (
     {
@@ -40,18 +41,7 @@ export const ButtonIcon = (
 
   const buttonSize = (size ?? (Icon ? Icon().props.size : 25)) + 2 * 8;
   const borderRadius = buttonSize / 2;
-
-  const hexToRGBA = (hex: string | undefined, alpha: number) => {
-    const hexToRgb = (hex: string | undefined) => {
-      const bigint = parseInt(hex!.slice(1), 16);
-      const r = (bigint >> 16) & 255;
-      const g = (bigint >> 8) & 255;
-      const b = bigint & 255;
-      return `${r}, ${g}, ${b}`;
-    };
-
-    return `rgba(${hexToRgb(hex)}, ${alpha})`;
-  };
+  const defaultIconColor = hexToRGBA(iconColor, 0.5);
 
   return (
       <View style={[
@@ -66,7 +56,7 @@ export const ButtonIcon = (
             testID={`${testID}-container`}
             onPress={onPress}
             background={TouchableNativeFeedback.Ripple(
-              hexToRGBA(iconColor, 0.5) ?? (Icon ? Icon().props.color : 'grey'),
+              defaultIconColor ?? (Icon ? Icon().props.color : '#808080'),
                 true,
                 borderRadius
             )}

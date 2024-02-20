@@ -43,6 +43,10 @@ export const AutocompleteSearch = (
     recommendationStyle,
     recommendationItemStyle,
     recommendationItemTextStyle,
+    recommendationItemRippleColor,
+    textBoldStyle,
+    textNormalStyle,
+    recommendationSeparatorStyle,
     RecommendationItem,
     noResultInfo,
     onSelectRecommendation,
@@ -89,6 +93,10 @@ export const AutocompleteSearch = (
         searchQuery: string,
         onPress: (item: any) => void,
       }) => ReactElement,
+    recommendationItemRippleColor?: string,
+    textBoldStyle?: StyleProp<TextStyle>,
+    textNormalStyle?: StyleProp<TextStyle>,
+    recommendationSeparatorStyle?: StyleProp<ViewStyle>
     noResultInfo: string,
     onSelectRecommendation?: (item: any) => void,
     returnKeyType?: ReturnKeyTypeOptions,
@@ -180,11 +188,9 @@ export const AutocompleteSearch = (
         icon={leftIconAfterPress ?? "arrow-left"}
         size={leftIconSize ?? 25}
         onPress={() => {
-
           if (onLeftFocusIconPress) {
             onLeftFocusIconPress();
           }
-
           searchIsOutOfFocus()
         }}
         iconColor={leftIconColor ?? '#64748B'}
@@ -199,11 +205,9 @@ export const AutocompleteSearch = (
         icon={leftIcon ?? "magnify"}
         size={leftIconSize ?? 25}
         onPress={() => {
-
           if (onLeftIconPress) {
             onLeftIconPress();
           }
-
           searchIsInFocus()
         }}
         iconColor={leftIconColor ?? '#64748B'}
@@ -222,11 +226,9 @@ export const AutocompleteSearch = (
         icon={rightIconAfterPress ?? "close-circle-outline"}
         size={rightIconSize ?? 25}
         onPress={() => {
-
           if (onRightFocusIconPress) {
             onRightFocusIconPress();
           }
-
           searchIsOutOfFocus()
         }}
         iconColor={rightIconColor ?? '#64748B'}
@@ -241,11 +243,9 @@ export const AutocompleteSearch = (
         icon={rightIcon ?? "magnify"}
         size={rightIconSize ?? 25}
         onPress={() => {
-
           if (onRightIconPress) {
             onRightIconPress();
           }
-
           searchIsInFocus()
         }}
         iconColor={rightIconColor ?? '#64748B'}
@@ -279,11 +279,9 @@ export const AutocompleteSearch = (
           placeholderTextColor={textInputPlaceholderColor ?? '#64748B'}
           onBlur={() => searchIsOutOfFocusWithoutClear()}
           onPressIn={() => {
-
             if (onTextInputFocus) {
               onTextInputFocus();
             }
-
             setSearchInFocus(true);
           }}
           value={searchQuery}
@@ -310,6 +308,10 @@ export const AutocompleteSearch = (
         CustomRecommendationItem={RecommendationItem}
         noResultInfo={noResultInfo}
         offsetRecommendation={offsetRecommendation}
+        recommendationItemRippleColor={recommendationItemRippleColor}
+        textBoldStyle={textBoldStyle}
+        textNormalStyle={textNormalStyle}
+        recommendationSeparatorStyle={recommendationSeparatorStyle}
       />
     </React.Fragment>
   )
