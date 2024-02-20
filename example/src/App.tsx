@@ -3,10 +3,9 @@ import * as React from 'react';
 import {Animated, SafeAreaView, StyleSheet} from 'react-native';
 import {AutocompleteSearch} from "../../src/components/AutocompleteSearch/AutocompleteSearch";
 import ScrollView = Animated.ScrollView;
+import {data} from "./data";
 
 export default function App() {
-
-  const data = [{id: '1', text: 'string'},{id: '2', text: 'string2'}]
 
   return (
     <SafeAreaView style={styles.safeAreaWrapper}>
