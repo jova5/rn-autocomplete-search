@@ -4,6 +4,7 @@ import {
   Platform,
   type ViewStyle,
 } from 'react-native';
+import {AutocompleteSearch} from "./components/AutocompleteSearch/AutocompleteSearch";
 
 const LINKING_ERROR =
   `The package 'rn-autocomplete-search' doesn't seem to be linked. Make sure: \n\n` +
@@ -24,3 +25,5 @@ export const RnAutocompleteSearchView =
     : () => {
         throw new Error(LINKING_ERROR);
       };
+
+export const RNAutocompleteSearch = AutocompleteSearch;

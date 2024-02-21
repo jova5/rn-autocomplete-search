@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import {Animated, SafeAreaView, StyleSheet} from 'react-native';
-import {RNAutocompleteSearch} from "../../src/components/RNAutocompleteSearch/RNAutocompleteSearch";
+import {AutocompleteSearch} from "../../src/components/AutocompleteSearch/AutocompleteSearch";
 import ScrollView = Animated.ScrollView;
 import {data} from "./data";
 
@@ -9,7 +9,7 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.safeAreaWrapper}>
-      <RNAutocompleteSearch
+      <AutocompleteSearch
         data={data}
         textInputPlaceholder={'Search'}
         noResultInfo={'No results'}

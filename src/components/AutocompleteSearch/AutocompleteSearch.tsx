@@ -11,7 +11,7 @@ import {
 import {ButtonIcon} from "../ButtonIcon/ButtonIcon";
 import {RecommendationModal} from "../RecommendationModal/RecommendationModal";
 
-export const RNAutocompleteSearch = (
+export const AutocompleteSearch = (
   {
     data,
     onLeftIconPress,
