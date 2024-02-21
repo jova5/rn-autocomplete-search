@@ -1,6 +1,5 @@
 {
   "name": "rn-autocomplete-search",
-  "version": "0.1.1",
   "description": "Search component with autocomplete feature",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
