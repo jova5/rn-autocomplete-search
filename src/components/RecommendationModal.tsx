@@ -9,7 +9,7 @@ import {
   View,
   type ViewStyle
 } from "react-native";
-import {RecommendationItem} from "../RecommendationItem/RecommendationItem";
+import RecommendationItem from "./RecommendationItem";
 
 const getRecommendationItem = (
   {
@@ -68,7 +68,7 @@ const getRecommendationItem = (
   )
 }
 
-export const RecommendationModal = (
+const RecommendationModal = (
   {
     data,
     open,
@@ -180,6 +180,8 @@ export const RecommendationModal = (
     </>
   )
 }
+
+export default RecommendationModal;
 
 const styles = StyleSheet.create({
   container: {

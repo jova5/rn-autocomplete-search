@@ -8,9 +8,9 @@ import {
   View,
   type ViewStyle
 } from "react-native";
-import {hexToRGBA} from "../common/Common";
+import {hexToRGBA} from "./common/Common";
 
-export const RecommendationItem = (
+const RecommendationItem = (
     {
       item,
       searchQuery,
@@ -77,6 +77,8 @@ export const RecommendationItem = (
     </>
   )
 }
+
+export default RecommendationItem;
 
 const styles = StyleSheet.create({
   suggestion: {

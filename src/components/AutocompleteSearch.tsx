@@ -8,10 +8,10 @@ import {
   View,
   type ViewStyle
 } from "react-native";
-import {ButtonIcon} from "../ButtonIcon/ButtonIcon";
-import {RecommendationModal} from "../RecommendationModal/RecommendationModal";
+import ButtonIcon from "./ButtonIcon";
+import RecommendationModal from "./RecommendationModal";
 
-export const AutocompleteSearch = (
+const AutocompleteSearch = (
   {
     data,
     onLeftIconPress,
@@ -316,6 +316,8 @@ export const AutocompleteSearch = (
     </React.Fragment>
   )
 }
+
+export default AutocompleteSearch;
 
 const styles = StyleSheet.create({
   search: {

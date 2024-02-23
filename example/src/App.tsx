@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 import {Animated, SafeAreaView, StyleSheet} from 'react-native';
-import {AutocompleteSearch} from "../../src/components/AutocompleteSearch/AutocompleteSearch";
 import ScrollView = Animated.ScrollView;
 import {data} from "./data";
+import AutocompleteSearch from "../../src/components/AutocompleteSearch";
 
 export default function App() {
 

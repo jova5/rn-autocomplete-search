@@ -1,9 +1,9 @@
 import React, {type ReactElement} from "react";
 import {StyleSheet, TouchableNativeFeedback, View} from "react-native";
 import MaterialIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import {hexToRGBA} from "../common/Common";
+import {hexToRGBA} from "./common/Common";
 
-export const ButtonIcon = (
+const ButtonIcon = (
     {
       icon,
       iconColor,
@@ -77,6 +77,8 @@ export const ButtonIcon = (
       </View>
   )
 }
+
+export default ButtonIcon;
 
 const styles = StyleSheet.create({
   container: {
