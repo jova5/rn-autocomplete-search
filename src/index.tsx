@@ -1,4 +1,10 @@
-import { NativeModules, Platform } from 'react-native';
+import {
+  requireNativeComponent,
+  UIManager,
+  Platform,
+  type ViewStyle,
+} from 'react-native';
+import {AutocompleteSearch} from "./components/AutocompleteSearch/AutocompleteSearch";
 
 const LINKING_ERROR =
   `The package 'rn-autocomplete-search' doesn't seem to be linked. Make sure: \n\n` +
@@ -6,17 +12,18 @@ const LINKING_ERROR =
   '- You rebuilt the app after installing the package\n' +
   '- You are not using Expo Go\n';
 
-const RnAutocompleteSearch = NativeModules.RnAutocompleteSearch
-  ? NativeModules.RnAutocompleteSearch
-  : new Proxy(
-      {},
-      {
-        get() {
-          throw new Error(LINKING_ERROR);
-        },
-      }
-    );
+type RnAutocompleteSearchProps = {
+  color: string;
+  style: ViewStyle;
+};
 
-export function multiply(a: number, b: number): Promise<number> {
-  return RnAutocompleteSearch.multiply(a, b);
-}
+const ComponentName = 'RnAutocompleteSearchView';
+
+export const RnAutocompleteSearchView =
+  UIManager.getViewManagerConfig(ComponentName) != null
+    ? requireNativeComponent<RnAutocompleteSearchProps>(ComponentName)
+    : () => {
+        throw new Error(LINKING_ERROR);
+      };
+
+export const RNAutocompleteSearch = AutocompleteSearch;

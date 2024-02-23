@@ -1,6 +1,7 @@
+# It does not work
 # rn-autocomplete-search
 
-Search bar with autocomplete feature
+Search component with autocomplete feature
 
 ## Installation
 
@@ -11,11 +12,11 @@ npm install rn-autocomplete-search
 ## Usage
 
 ```js
-import { multiply } from 'rn-autocomplete-search';
+import { RnAutocompleteSearchView } from "rn-autocomplete-search";
 
 // ...
 
-const result = await multiply(3, 7);
+<RnAutocompleteSearchView color="tomato" />
 ```
 
 ## Contributing

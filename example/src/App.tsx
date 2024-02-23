@@ -1,31 +1,30 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'rn-autocomplete-search';
+import {Animated, SafeAreaView, StyleSheet} from 'react-native';
+import {AutocompleteSearch} from "../../src/components/AutocompleteSearch/AutocompleteSearch";
+import ScrollView = Animated.ScrollView;
+import {data} from "./data";
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
 
   return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-    </View>
+    <SafeAreaView style={styles.safeAreaWrapper}>
+      <AutocompleteSearch
+        data={data}
+        textInputPlaceholder={'Search'}
+        noResultInfo={'No results'}
+      />
+      <ScrollView showsVerticalScrollIndicator={false} style={{display: "flex"}}/>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  safeAreaWrapper: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
+    paddingTop: 10,
+    paddingBottom: 0,
+    display: 'flex',
+    backgroundColor: '#ffffff'
   },
 });
