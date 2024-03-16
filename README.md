@@ -20,7 +20,7 @@ Only for android.
 <span style="font-size:0.6em;">You always can try on iOS</span>
 
 ## Demo
-<img src="rn-autocomplete-demo.gif" width="540" height="1080"/>
+<img src="rn-autocomplete-demo.gif" width="360" height="720"/>
 
 ## Usage
 
