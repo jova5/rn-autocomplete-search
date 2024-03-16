@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import ButtonIcon from "./ButtonIcon";
 import RecommendationModal from "./RecommendationModal";
+import type {Data} from "./common/Common";
 
 const AutocompleteSearch = (
   {
@@ -53,7 +54,7 @@ const AutocompleteSearch = (
     returnKeyType,
     onSubmitTextInput,
   }: {
-    data: { id?: string, text: string }[],
+    data: Data[],
     onLeftIconPress?: () => void,
     onLeftFocusIconPress?: () => void,
     onRightIconPress?: () => void,
@@ -89,16 +90,16 @@ const AutocompleteSearch = (
         searchQuery,
         onPress,
       }: {
-        item: any,
+        item: Data,
         searchQuery: string,
-        onPress: (item: any) => void,
+        onPress: (item: Data) => void,
       }) => ReactElement,
     recommendationItemRippleColor?: string,
     textBoldStyle?: StyleProp<TextStyle>,
     textNormalStyle?: StyleProp<TextStyle>,
     recommendationSeparatorStyle?: StyleProp<ViewStyle>
     noResultInfo: string,
-    onSelectRecommendation?: (item: any) => void,
+    onSelectRecommendation?: (item: Data) => void,
     returnKeyType?: ReturnKeyTypeOptions,
     onSubmitTextInput?: (searchQuery: string) => void,
   }) => {
@@ -162,7 +163,7 @@ const AutocompleteSearch = (
     }
   }
 
-  const onSelectSuggestion = (item: any) => {
+  const onSelectSuggestion = (item: Data) => {
 
     setSearchQuery(item.text);
 

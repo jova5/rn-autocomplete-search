@@ -8,7 +8,7 @@ import {
   View,
   type ViewStyle
 } from "react-native";
-import {hexToRGBA} from "./common/Common";
+import {type Data, hexToRGBA} from "./common/Common";
 
 const RecommendationItem = (
     {
@@ -22,9 +22,9 @@ const RecommendationItem = (
       textNormalStyle,
       recommendationSeparatorStyle
     }: {
-      item: any,
+      item: Data,
       searchQuery: string,
-      onPress: (item: any) => void,
+      onPress: (item: Data) => void,
       recommendationItemStyle?: StyleProp<ViewStyle>,
       recommendationItemTextStyle?: StyleProp<TextStyle>,
       recommendationItemRippleColor?: string,

@@ -14,3 +14,8 @@ export const hexToRGBA = (hex: string | undefined, alpha: number) => {
 
   return `rgba(${hexToRgb(hex)}, ${alpha})`;
 };
+
+export type Data = {
+  id: string,
+  text: string
+}

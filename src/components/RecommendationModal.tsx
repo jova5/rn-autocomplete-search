@@ -10,6 +10,7 @@ import {
   type ViewStyle
 } from "react-native";
 import RecommendationItem from "./RecommendationItem";
+import type {Data} from "./common/Common";
 
 const getRecommendationItem = (
   {
@@ -30,14 +31,14 @@ const getRecommendationItem = (
         searchQuery,
         onPress,
       }: {
-        item: any,
+        item: Data,
         searchQuery: string,
-        onPress: (item: any) => void,
+        onPress: (item: Data) => void,
       }) => ReactElement,
 
-    item: any,
+    item: Data,
     searchQuery: string,
-    onPress: (item: any) => void,
+    onPress: (item: Data) => void,
     recommendationItemStyle?: StyleProp<ViewStyle>,
     recommendationItemTextStyle?: StyleProp<TextStyle>,
     recommendationItemRippleColor?: string,
@@ -86,10 +87,10 @@ const RecommendationModal = (
     textNormalStyle,
     recommendationSeparatorStyle
   }: {
-    data: { id?: string, text: string }[],
+    data: Data[],
     open: boolean,
     searchQuery: string,
-    onSelectSuggestion: (item: any) => void,
+    onSelectSuggestion: (item: Data) => void,
     searchBarCoordinateInfo: any,
     offsetRecommendation?: number,
     recommendationStyle?: StyleProp<ViewStyle>,
@@ -101,9 +102,9 @@ const RecommendationModal = (
         searchQuery,
         onPress,
       }: {
-        item: any,
+        item: Data,
         searchQuery: string,
-        onPress: (item: any) => void,
+        onPress: (item: Data) => void,
       }) => ReactElement,
     noResultInfo: string,
     recommendationItemRippleColor?: string,
@@ -112,7 +113,7 @@ const RecommendationModal = (
     recommendationSeparatorStyle?: StyleProp<ViewStyle>,
   }) => {
 
-  const [filteredData, setFilteredData] = useState<any[]>(data);
+  const [filteredData, setFilteredData] = useState<Data[]>(data);
 
   useEffect(() => {
     setFilteredData(
