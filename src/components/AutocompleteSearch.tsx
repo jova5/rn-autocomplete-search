@@ -53,6 +53,9 @@ const AutocompleteSearch = (
     onSelectRecommendation,
     returnKeyType,
     onSubmitTextInput,
+    animated = true,
+    animateOpenDuration,
+    animateCloseDuration
   }: {
     data: Data[],
     onLeftIconPress?: () => void,
@@ -102,6 +105,9 @@ const AutocompleteSearch = (
     onSelectRecommendation?: (item: Data) => void,
     returnKeyType?: ReturnKeyTypeOptions,
     onSubmitTextInput?: (searchQuery: string) => void,
+    animated?: boolean,
+    animateOpenDuration?: number,
+    animateCloseDuration?: number
   }) => {
 
   const [searchInFocus, setSearchInFocus] = useState(false);
@@ -146,7 +152,10 @@ const AutocompleteSearch = (
     if (searchInputRef.current) {
       searchInputRef.current.blur();
       searchInputRef.current.clear();
-      setSearchQuery("");
+
+      setTimeout(() => {
+        setSearchQuery("");
+      }, animateCloseDuration ? animateCloseDuration + 100 : 800);
     }
   }
 
@@ -165,9 +174,11 @@ const AutocompleteSearch = (
 
   const onSelectSuggestion = (item: Data) => {
 
-    setSearchQuery(item.text);
-
     searchIsOutOfFocusWithoutClear();
+
+    setTimeout(() => {
+      setSearchQuery(item.text);
+    }, animateOpenDuration ? animateOpenDuration + 100 : 200);
 
     if (onSelectRecommendation) {
       onSelectRecommendation(item);
@@ -313,6 +324,9 @@ const AutocompleteSearch = (
         textBoldStyle={textBoldStyle}
         textNormalStyle={textNormalStyle}
         recommendationSeparatorStyle={recommendationSeparatorStyle}
+        animated={animated}
+        animateOpenDuration={animateOpenDuration}
+        animateCloseDuration={animateCloseDuration}
       />
     </React.Fragment>
   )

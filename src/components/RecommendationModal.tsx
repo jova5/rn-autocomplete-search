@@ -1,12 +1,12 @@
 import React, {type ReactElement, useEffect, useState} from "react";
 import {
+  Animated,
   Dimensions,
   FlatList,
   type StyleProp,
   StyleSheet,
   Text,
   type TextStyle,
-  View,
   type ViewStyle
 } from "react-native";
 import RecommendationItem from "./RecommendationItem";
@@ -85,7 +85,10 @@ const RecommendationModal = (
     recommendationItemRippleColor,
     textBoldStyle,
     textNormalStyle,
-    recommendationSeparatorStyle
+    recommendationSeparatorStyle,
+    animated = true,
+    animateOpenDuration,
+    animateCloseDuration
   }: {
     data: Data[],
     open: boolean,
@@ -111,9 +114,13 @@ const RecommendationModal = (
     textBoldStyle?: StyleProp<TextStyle>,
     textNormalStyle?: StyleProp<TextStyle>,
     recommendationSeparatorStyle?: StyleProp<ViewStyle>,
+    animated?: boolean,
+    animateOpenDuration?: number,
+    animateCloseDuration?: number
   }) => {
 
   const [filteredData, setFilteredData] = useState<Data[]>(data);
+  const heightValue = useState(new Animated.Value(0))[0];
 
   useEffect(() => {
     setFilteredData(
@@ -122,14 +129,44 @@ const RecommendationModal = (
           value.text.toLowerCase().includes(searchQuery.toLowerCase())))
   }, [searchQuery]);
 
+  const animateOpenModal = () => {
+    Animated.timing(heightValue, {
+      toValue: Dimensions.get('window').height * 0.38,
+      duration: animateOpenDuration ?? 100,
+      useNativeDriver: false
+    }).start()
+  }
+
+  const animateCloseModal = () => {
+    Animated.timing(heightValue, {
+      toValue: 0,
+      duration: animateCloseDuration ?? 100,
+      useNativeDriver: false
+    }).start()
+  }
+
   useEffect(() => {
-    if (!open) {
-      setFilteredData(data);
-    } else if (open && searchQuery != "") {
-      setFilteredData(data.filter(
-        (value) =>
-          value.text.toLowerCase().includes(searchQuery.toLowerCase())))
+
+    if (open) {
+      if (searchQuery == "") {
+        setFilteredData(data);
+      } else {
+        setFilteredData(data.filter(
+          (value) =>
+            value.text.toLowerCase().includes(searchQuery.toLowerCase())))
+      }
+      setTimeout(() => {
+      }, 400);
+
+      if (animated) {
+        animateOpenModal()
+      }
+    } else {
+      if (animated) {
+        animateCloseModal()
+      }
     }
+
   }, [open]);
 
   const bellowYCoordinate = searchBarCoordinateInfo.y
@@ -137,48 +174,44 @@ const RecommendationModal = (
     + (offsetRecommendation ?? 0);
 
   return (
-    <>
-      {
-        open &&
-        <View
-          style={[
-            styles.container,
-            {
-              top: bellowYCoordinate,
-              height: Dimensions.get('window').height * 0.38,
-              width: searchBarCoordinateInfo.width
-            },
-            recommendationStyle
-          ]}
-        >
-          <FlatList
-            data={filteredData}
-            keyExtractor={(_, index) => `recommended_item_${index}`}
-            showsVerticalScrollIndicator={false}
-            keyboardShouldPersistTaps='always'
-            renderItem={({item}) =>
-              getRecommendationItem({
-                CustomRecommendationItem,
-                item,
-                searchQuery,
-                onPress: onSelectSuggestion,
-                recommendationItemStyle,
-                recommendationItemTextStyle,
-                recommendationItemRippleColor,
-                textBoldStyle,
-                textNormalStyle,
-                recommendationSeparatorStyle
-              })
-            }
-            ListEmptyComponent={
-              <Text style={[styles.suggestionEmpty, recommendationItemTextStyle]}>
-                {noResultInfo}
-              </Text>
-            }
-          />
-        </View>
-      }
-    </>
+    <Animated.View
+      style={[
+        styles.container,
+        {
+          top: bellowYCoordinate,
+          height: heightValue,
+          width: searchBarCoordinateInfo.width
+        },
+        recommendationStyle
+      ]}
+    >
+      <FlatList
+        style={{margin: 10}}
+        data={filteredData}
+        keyExtractor={(_, index) => `recommended_item_${index}`}
+        showsVerticalScrollIndicator={false}
+        keyboardShouldPersistTaps='always'
+        renderItem={({item}) =>
+          getRecommendationItem({
+            CustomRecommendationItem,
+            item,
+            searchQuery,
+            onPress: onSelectSuggestion,
+            recommendationItemStyle,
+            recommendationItemTextStyle,
+            recommendationItemRippleColor,
+            textBoldStyle,
+            textNormalStyle,
+            recommendationSeparatorStyle
+          })
+        }
+        ListEmptyComponent={
+          <Text style={[styles.suggestionEmpty, recommendationItemTextStyle]}>
+            {noResultInfo}
+          </Text>
+        }
+      />
+    </Animated.View>
   )
 }
 
@@ -189,20 +222,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     backgroundColor: 'white',
     zIndex: 100,
-    paddingTop: 10,
-    paddingBottom: 5,
     borderRadius: 10,
     margin: 10,
     marginTop: 0,
     elevation: 20,
     shadowColor: '#000000',
-  },
-  suggestion: {
-    padding: 15,
-    marginLeft: 5,
-    marginRight: 5,
-    elevation: 0,
-    backgroundColor: 'white'
   },
   suggestionEmpty: {
     padding: 15,

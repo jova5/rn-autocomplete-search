@@ -20,6 +20,7 @@ Only for android.
 <span style="font-size:0.6em;">You always can try on iOS</span>
 
 ## Demo
+
 <img src="rn-autocomplete-demo.gif" width="360" height="720"/>
 
 ## Usage
@@ -69,7 +70,7 @@ export default App;
 
 Latest [react-native-vector-icons](https://www.npmjs.com/package/react-native-vector-icons?source=post_page---------------------------)
 
-## Details
+## Props
 
 | Parameter                     | Required | Value                                                                                                                                                       | Description                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -112,6 +113,9 @@ Latest [react-native-vector-icons](https://www.npmjs.com/package/react-native-ve
 | textBoldStyle                 | False    | StyleProp<TextStyle>                                                                                                                                        | Customize bolded text in recommendation item.                                                                                                                                                                                                                                                                                                    |
 | textNormalStyle               | False    | StyleProp<TextStyle>                                                                                                                                        | Customize normal text in recommendation item.                                                                                                                                                                                                                                                                                                    |
 | recommendationSeparatorStyle  | False    | StyleProp<ViewStyle>                                                                                                                                        | All recommendation items are separated with thin line. With this parameter you can custime recommendation itme separator.                                                                                                                                                                                                                        |
+| animated                      | False    | boolean                                                                                                                                                     | Show recommendation modal animated. It is true by default.                                                                                                                                                                                                                                                                                       |
+| animateOpenDuration           | False    | number                                                                                                                                                      | Open recommendation modal animation in milisesconds.                                                                                                                                                                                                                                                                                             |
+| animateCloseDuration          | False    | number                                                                                                                                                      | Close recommendation modal animation in milisesconds.                                                                                                                                                                                                                                                                                            |
 
 ## Contributing
 
