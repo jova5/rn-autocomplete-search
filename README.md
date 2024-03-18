@@ -1,5 +1,3 @@
-# It does not work
-
 # rn-autocomplete-search
 
 Search component with autocomplete feature.
